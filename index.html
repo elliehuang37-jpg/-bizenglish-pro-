@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BizEnglish Pro — 180天商務英文</title>
+
+<!-- ── PWA 基本設定 ── -->
+<meta name="application-name" content="BizEnglish Pro">
+<meta name="description" content="直銷商務英文180天每日練習，聽說讀寫全方位">
+<meta name="theme-color" content="#C8185A">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- ── iOS Safari 安裝設定 ── -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BizEnglish">
+<link rel="apple-touch-icon" href="icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="72x72"  href="icons/icon-72.png">
+<link rel="apple-touch-icon" sizes="96x96"  href="icons/icon-96.png">
+<link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png">
+<link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+
+<!-- iOS Splash Screen（iPhone 常見尺寸） -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- ── Android / Chrome 安裝設定 ── -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+
+<!-- ── Open Graph（分享預覽） ── -->
+<meta property="og:title" content="BizEnglish Pro — 180天商務英文">
+<meta property="og:description" content="直銷商務英文每日練習，會議、Email、口說全方位">
+<meta property="og:type" content="website">
+<!-- 品牌字體 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* ── 品牌主色：玫瑰粉 → 酒紅 → 玫瑰金 ── */
+    --primary:        #C8185A;
+    --primary-dark:   #7A1040;
+    --primary-light:  #FAE0EC;
+    --secondary:      #B5882A;
+    --secondary-light:#F7EDD0;
+
+    /* ── 狀態色 ── */
+    --success:        #2D6A4F;
+    --success-light:  #D8F3DC;
+    --warning:        #B5882A;
+    --warning-light:  #F7EDD0;
+    --danger:         #9B3A2A;
+    --danger-light:   #FDEAE6;
+    --info:           #1A3A5C;
+    --info-light:     #D6E8F7;
+
+    /* ── 背景 & 卡片 ── */
+    --bg:             #F5F0EC;
+    --bg-warm:        #EFE8E0;
+    --card:           #FFFFFF;
+    --text:           #2C1A12;
+    --text-muted:     #8C7B6E;
+    --border:         #E8DDD4;
+    --shadow:         0 4px 24px rgba(200,24,90,0.09);
+    --shadow-gold:    0 4px 20px rgba(181,136,42,0.18);
+
+    /* ── 漸層 ── */
+    --grad-brand:     linear-gradient(135deg, #C8185A 0%, #7A1040 55%, #B5882A 100%);
+    --grad-warm:      linear-gradient(135deg, #F5F0EC 0%, #EFE8E0 100%);
+
+    /* ── 形狀 ── */
+    --radius:         18px;
+    --radius-sm:      10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  /* 標題字體 */
+  h1, h2, .brand-font { font-family: 'Cormorant Garamond', serif; }
+  /* 數字字體 */
+  .stat-num, .quiz-score, .vocab-counter, .phase-days { font-family: 'DM Mono', monospace; }
+
+  /* ─── Splash ─── */
+  #splash { position: fixed; inset: 0; background: var(--grad-brand); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity .5s; }
+  #splash::before { content:''; position:absolute; inset:0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  #splash .logo-wrap { text-align: center; color: #fff; position: relative; z-index: 1; }
+  #splash .logo-icon { font-size: 64px; margin-bottom: 16px; filter: drop-shadow(0 4px 12px rgba(0,0,0,.2)); }
+  #splash h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; }
+  #splash p { font-size: 13px; opacity: .8; margin-top: 8px; letter-spacing: .5px; }
+  #splash .progress-bar { width: 200px; height: 3px; background: rgba(255,255,255,.25); border-radius: 4px; margin-top: 44px; overflow: hidden; }
+  #splash .progress-bar-fill { height: 100%; background: rgba(255,255,255,.9); border-radius: 4px; animation: splashLoad 1.8s ease forwards; }
+  @keyframes splashLoad { from{width:0} to{width:100%} }
+
+  /* ─── Nav ─── */
+  #nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid var(--border); display: flex; z-index: 100; padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -2px 16px rgba(200,24,90,.07); }
+  .nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 4px 8px; cursor: pointer; border: none; background: none; color: var(--text-muted); font-size: 10px; font-weight: 600; gap: 4px; transition: color .2s; }
+  .nav-btn .nav-icon { font-size: 22px; transition: transform .2s; }
+  .nav-btn.active { color: var(--primary); }
+  .nav-btn.active .nav-icon { transform: translateY(-2px); }
+
+  /* ─── Pages ─── */
+  .page { display: none; padding: 0 0 80px; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ─── Header ─── */
+  .page-header { background: var(--grad-brand); color: #fff; padding: 52px 20px 28px; position: relative; overflow: hidden; }
+  /* 右側玫瑰金半透明裝飾圓 */
+  .page-header::before { content:''; position: absolute; top:-30px; right:-50px; width: 180px; height: 180px; background: rgba(181,136,42,.18); border-radius: 50%; }
+  .page-header::after  { content:''; position: absolute; bottom:-70px; left:-20px; width: 220px; height: 220px; background: rgba(255,255,255,.05); border-radius: 50%; }
+  .page-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; letter-spacing: .5px; position: relative; z-index: 1; }
+  .page-header p { font-size: 13px; opacity: .82; margin-top: 5px; position: relative; z-index: 1; letter-spacing: .3px; }
+
+  /* ─── Cards ─── */
+  .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; margin: 16px; }
+  .card-sm { border-radius: var(--radius-sm); padding: 14px 16px; }
+
+  /* ─── Home Page ─── */
+  .streak-banner { background: linear-gradient(135deg, #C8185A, #7A1040); color: #fff; border-radius: var(--radius); margin: 16px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; box-shadow: 0 6px 24px rgba(200,24,90,.28); position: relative; overflow: hidden; }
+  .streak-banner::after { content:''; position:absolute; right:-20px; top:-20px; width:100px; height:100px; background:rgba(181,136,42,.2); border-radius:50%; }
+  .streak-fire { font-size: 40px; position: relative; z-index: 1; }
+  .streak-info { position: relative; z-index: 1; }
+  .streak-info h3 { font-size: 18px; font-weight: 800; }
+  .streak-info p { font-size: 12px; opacity: .88; margin-top: 2px; }
+
+  .progress-overview { background: var(--card); border-radius: var(--radius); margin: 0 16px 16px; padding: 20px; box-shadow: var(--shadow); }
+  .progress-overview h3 { font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 14px; letter-spacing: .3px; }
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .progress-label { font-size: 13px; font-weight: 600; width: 80px; flex-shrink: 0; }
+  .progress-track { flex: 1; height: 7px; background: var(--border); border-radius: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 8px; transition: width .8s cubic-bezier(.4,0,.2,1); }
+  .progress-pct { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--primary); width: 36px; text-align: right; }
+
+  .today-lesson { background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%); border-radius: var(--radius); margin: 0 16px 16px; padding: 20px; border: 1.5px solid rgba(200,24,90,.25); position: relative; overflow: hidden; }
+  .today-lesson::after { content:''; position:absolute; right:-30px; bottom:-30px; width:120px; height:120px; background:rgba(181,136,42,.12); border-radius:50%; }
+  .today-lesson .day-badge { display: inline-block; background: var(--grad-brand); color: #fff; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 1px; }
+  .today-lesson h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--primary-dark); position: relative; z-index: 1; }
+  .today-lesson .topic { font-size: 13px; color: var(--text-muted); margin-top: 4px; position: relative; z-index: 1; }
+  .today-lesson .lesson-meta { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .lesson-meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-muted); font-weight: 600; }
+  .start-btn { width: 100%; margin-top: 14px; background: var(--grad-brand); color: #fff; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; letter-spacing: .8px; transition: opacity .2s, transform .1s; position: relative; z-index: 1; }
+  .start-btn:active { transform: scale(.98); opacity: .88; }
+
+  .quick-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 16px 16px; }
+  .stat-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px 12px; text-align: center; box-shadow: var(--shadow); border-bottom: 2px solid var(--primary-light); }
+  .stat-num { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 500; color: var(--primary); line-height: 1; }
+  .stat-label { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
+  /* ─── Phase Cards ─── */
+  .phase-grid { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .phase-card { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .phase-header { padding: 16px 18px; display: flex; align-items: center; gap: 14px; cursor: pointer; }
+  .phase-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .phase-info { flex: 1; }
+  .phase-info h3 { font-size: 15px; font-weight: 700; }
+  .phase-info p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .phase-days { font-size: 12px; font-weight: 700; color: var(--text-muted); }
+  .phase-progress-bar { height: 3px; background: var(--border); margin: 0 18px 16px; border-radius: 3px; overflow: hidden; }
+  .phase-progress-fill { height: 100%; border-radius: 3px; }
+  .days-list { padding: 0 12px 12px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .day-btn { aspect-ratio: 1; border-radius: 10px; border: 2px solid var(--border); background: var(--bg); font-size: 12px; font-weight: 700; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; position: relative; }
+  .day-btn.done { background: var(--success); border-color: var(--success); color: #fff; }
+  .day-btn.today { background: var(--grad-brand); border-color: var(--primary); color: #fff; box-shadow: 0 4px 14px rgba(200,24,90,.35); }
+  .day-btn.locked { opacity: .4; cursor: default; }
+  .day-btn.done::after { content: '✓'; position: absolute; top: -2px; right: 2px; font-size: 9px; }
+
+  /* ─── Lesson Page ─── */
+  #lesson-page { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 200; overflow-y: auto; padding-bottom: 20px; }
+  .lesson-top-bar { background: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 10; }
+  .lesson-top-bar .back-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text); padding: 0; }
+  .lesson-top-bar .lesson-title { flex: 1; font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lesson-progress-bar { height: 4px; background: var(--border); position: sticky; top: 57px; z-index: 9; }
+  .lesson-progress-fill { height: 100%; background: var(--grad-brand); transition: width .4s; }
+
+  /* Tab bar */
+  .lesson-tabs { display: flex; overflow-x: auto; gap: 0; padding: 0; background: #fff; border-bottom: 2px solid var(--border); scrollbar-width: none; position: sticky; top: 61px; z-index: 8; }
+  .lesson-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { flex-shrink: 0; padding: 12px 14px; font-size: 12px; font-weight: 700; color: var(--text-muted); border: none; background: none; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s; white-space: nowrap; }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-light); }
+
+  /* Tab content */
+  .tab-content { display: none; padding: 16px; }
+  .tab-content.active { display: block; }
+
+  /* Vocabulary */
+  .vocab-card { perspective: 1000px; height: 220px; margin-bottom: 16px; cursor: pointer; }
+  .vocab-card-inner { width: 100%; height: 100%; transition: transform .5s; transform-style: preserve-3d; position: relative; }
+  .vocab-card.flipped .vocab-card-inner { transform: rotateY(180deg); }
+  .vocab-front, .vocab-back { position: absolute; inset: 0; border-radius: var(--radius); backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 24px; text-align: center; box-shadow: var(--shadow); }
+  .vocab-front { background: var(--grad-brand); color: #fff; }
+  .vocab-front .word { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; letter-spacing: 2px; }
+  .vocab-front .phonetic { font-family: 'DM Mono', monospace; font-size: 13px; opacity: .82; margin-top: 6px; }
+  .vocab-front .tap-hint { font-size: 11px; opacity: .55; margin-top: 10px; }
+  .vocab-back { background: var(--card); transform: rotateY(180deg); border: 1.5px solid var(--primary-light); }
+  .vocab-back .meaning-zh { font-family: 'Noto Sans TC', sans-serif; font-size: 22px; font-weight: 700; color: var(--primary); }
+  .vocab-back .meaning-en { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+  .vocab-back .example { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--text); margin-top: 10px; font-style: italic; background: var(--bg); padding: 7px 12px; border-radius: 8px; width: 100%; line-height: 1.6; }
+
+  /* Vocab speak button (on card) */
+  .vocab-speak-btn { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,.22); color: #fff; border: 1.5px solid rgba(255,255,255,.5); border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: background .2s; -webkit-tap-highlight-color: transparent; }
+  .vocab-speak-btn:active { background: rgba(255,255,255,.38); }
+  .vocab-speak-btn.playing { background: rgba(255,255,255,.38); animation: speakPulse .6s ease infinite alternate; }
+  .vocab-speak-back-btn { display: inline-flex; align-items: center; gap: 5px; background: var(--primary-light); color: var(--primary); border: 1px solid rgba(200,24,90,.2); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+  .vocab-speak-back-btn:active { background: var(--primary); color: #fff; }
+  @keyframes speakPulse { from{transform:scale(1)} to{transform:scale(1.05)} }
+
+  .vocab-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .vocab-nav-btn { background: var(--card); border: 2px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .2s; }
+  .vocab-nav-btn:active { background: var(--grad-brand); color: #fff; border-color: var(--primary); }
+  .vocab-counter { font-size: 14px; font-weight: 700; color: var(--text-muted); }
+  .know-row { display: flex; gap: 10px; margin-top: 12px; }
+  .know-btn { flex: 1; padding: 12px; border-radius: 10px; border: none; font-size: 14px; font-weight: 700; cursor: pointer; }
+  .know-btn.yes { background: var(--success-light); color: var(--success); }
+  .know-btn.no { background: #FEE2E2; color: var(--danger); }
+
+  /* Phrases */
+  .phrase-item { background: var(--card); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .phrase-en { font-size: 15px; font-weight: 700; color: var(--primary-dark); letter-spacing: .2px; }
+  .phrase-zh { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .phrase-context { font-size: 12px; color: var(--text-muted); margin-top: 8px; background: var(--bg); padding: 6px 10px; border-radius: 6px; border-left: 3px solid var(--secondary); }
+  .play-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-light); color: var(--primary); border: none; border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+
+  /* Dialogue */
+  .dialogue-scene { background: linear-gradient(135deg, var(--primary-light), var(--secondary-light)); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 16px; border-left: 3px solid var(--primary); }
+  .dialogue-scene-title { font-size: 13px; font-weight: 700; color: var(--primary); }
+  .dialogue-scene p { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .dialogue-line { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
+  .dialogue-line.right { flex-direction: row-reverse; }
+  .speaker-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: var(--bg); }
+  .dialogue-bubble { max-width: 75%; background: var(--card); border-radius: 16px; padding: 10px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .dialogue-line.right .dialogue-bubble { background: var(--grad-brand); }
+  .bubble-en { font-size: 14px; font-weight: 600; color: var(--text); }
+  .dialogue-line.right .bubble-en { color: #fff; }
+  .bubble-zh { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .dialogue-line.right .bubble-zh { color: rgba(255,255,255,.8); }
+  .speaker-name { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
+  .dialogue-line.right .speaker-name { text-align: right; }
+
+  /* Email */
+  .email-container { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .email-header-bar { background: var(--grad-brand); color: #fff; padding: 14px 16px; }
+  .email-header-bar h4 { font-size: 14px; font-weight: 800; }
+  .email-field { padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+  .email-field-label { font-size: 12px; font-weight: 700; color: var(--text-muted); width: 50px; flex-shrink: 0; padding-top: 2px; }
+  .email-field-val { font-size: 13px; color: var(--text); }
+  .email-body { padding: 16px; font-size: 14px; line-height: 1.8; color: var(--text); white-space: pre-wrap; }
+  .email-highlight { background: #FEF9C3; padding: 1px 4px; border-radius: 3px; font-weight: 600; cursor: pointer; }
+
+  /* Quiz */
+  .quiz-question { background: var(--card); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .quiz-question h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 16px; line-height: 1.5; }
+  .quiz-opt { display: block; width: 100%; text-align: left; padding: 14px 16px; border: 2px solid var(--border); border-radius: 10px; background: var(--bg); font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: 8px; transition: all .2s; }
+  .quiz-opt.correct { background: var(--success-light); border-color: var(--success); color: var(--success); }
+  .quiz-opt.wrong { background: var(--danger-light); border-color: var(--danger); color: var(--danger); }
+  .quiz-opt.show-answer { background: var(--success-light); border-color: var(--success); color: var(--success); }
+  .quiz-result { padding: 16px; background: var(--card); border-radius: var(--radius); text-align: center; box-shadow: var(--shadow); }
+  .quiz-score { font-family: 'DM Mono', monospace; font-size: 52px; font-weight: 500; color: var(--primary); }
+  .quiz-score-label { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+  /* Speaking */
+  .speaking-card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .speaking-prompt { font-size: 16px; font-weight: 700; color: var(--primary-dark); text-align: center; margin: 16px 0; }
+  .speaking-zh { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
+  .record-btn { width: 80px; height: 80px; border-radius: 50%; background: var(--grad-brand); border: none; display: flex; align-items: center; justify-content: center; font-size: 36px; cursor: pointer; margin: 0 auto; box-shadow: 0 6px 24px rgba(200,24,90,.35); transition: all .2s; }
+  .record-btn.recording { background: var(--danger); animation: pulse 1s infinite; box-shadow: 0 6px 24px rgba(220,38,38,.4); }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+  .record-hint { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 12px; font-weight: 600; }
+  .model-answer { background: var(--bg); border-radius: var(--radius-sm); padding: 14px; margin-top: 16px; }
+  .model-answer h5 { font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+  .model-answer p { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  /* Complete screen */
+  .complete-screen { text-align: center; padding: 40px 20px; }
+  .complete-screen .trophy { font-size: 80px; margin-bottom: 16px; }
+  .complete-screen h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; color: var(--primary); letter-spacing: .5px; }
+  .complete-screen p { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+  .xp-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--secondary-light); color: var(--secondary); font-family: 'DM Mono', monospace; font-size: 17px; font-weight: 500; padding: 10px 20px; border-radius: 20px; margin-top: 20px; border: 1.5px solid rgba(181,136,42,.3); }
+  .next-lesson-btn { width: 100%; margin-top: 20px; background: var(--grad-brand); color: #fff; border: none; border-radius: 14px; padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer; letter-spacing: .5px; }
+
+  /* Progress page */
+  .chart-container { background: var(--card); border-radius: var(--radius); margin: 16px; padding: 20px; box-shadow: var(--shadow); }
+  .chart-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+  .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .chart-bar { width: 100%; border-radius: 6px 6px 0 0; min-height: 4px; }
+  .chart-bar-label { font-size: 10px; color: var(--text-muted); font-weight: 600; }
+
+  .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 16px 16px; }
+  .skill-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px; box-shadow: var(--shadow); text-align: center; }
+  .skill-ring { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; position: relative; }
+  .skill-ring svg { position: absolute; inset: 0; width: 60px; height: 60px; transform: rotate(-90deg); }
+  .skill-ring-icon { position: relative; z-index: 1; }
+  .skill-name { font-size: 13px; font-weight: 700; }
+  .skill-pct { font-size: 18px; font-weight: 800; color: var(--primary); }
+
+  /* Settings page */
+  .settings-section { margin: 0 16px 16px; }
+  .settings-section h3 { font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .8px; }
+  .settings-item { background: var(--card); border-radius: 4px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+  .settings-item:first-child { border-radius: var(--radius-sm) var(--radius-sm) 4px 4px; }
+  .settings-item:last-child { border-radius: 4px 4px var(--radius-sm) var(--radius-sm); }
+  .settings-item-label { font-size: 14px; font-weight: 600; }
+  .settings-item-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .toggle { width: 44px; height: 24px; border-radius: 12px; background: var(--border); position: relative; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+  .toggle.on { background: var(--primary); }
+  .toggle::after { content:''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: left .2s; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .toggle.on::after { left: 22px; }
+  .select-pill { background: var(--grad-brand); color: #fff; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; border: none; cursor: pointer; letter-spacing: .3px; }
+
+  /* Notification */
+  .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-80px); background: var(--text); color: #fff; padding: 12px 20px; border-radius: 12px; font-size: 14px; font-weight: 600; z-index: 9999; transition: transform .3s cubic-bezier(.4,0,.2,1); white-space: nowrap; max-width: 90vw; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { background: var(--success); }
+  .toast.warning { background: var(--warning); }
+
+  /* Utility */
+  .section-title { font-size: 17px; font-weight: 800; padding: 16px 16px 8px; }
+  .chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+  .chip-blue   { background: var(--primary-light);   color: var(--primary); }
+  .chip-green  { background: var(--success-light);   color: var(--success); }
+  .chip-yellow { background: var(--secondary-light); color: var(--secondary); }
+  .chip-purple { background: var(--primary-light);   color: var(--primary-dark); }
+  .btn { padding: 12px 20px; border-radius: 10px; border: none; font-size: 14px; font-weight: 700; cursor: pointer; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); width: 100%; }
+
+  /* Animate */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+  .fade-up { animation: fadeUp .4s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- Splash -->
+<div id="splash">
+  <div class="logo-wrap">
+    <div class="logo-icon">💼</div>
+    <h1>BizEnglish Pro</h1>
+    <p>直銷商務英文 · 180天全攻略</p>
+    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════ HOME PAGE ═══════ -->
+<div id="page-home" class="page active">
+  <div class="page-header">
+    <h2>今日學習 📚</h2>
+    <p id="home-date">開始您的商務英文之旅</p>
+  </div>
+
+  <div class="streak-banner">
+    <div class="streak-fire">🔥</div>
+    <div class="streak-info">
+      <h3 id="streak-count">0 天連續學習</h3>
+      <p>保持學習節奏，成功就在眼前！</p>
+    </div>
+  </div>
+
+  <div class="today-lesson" id="today-lesson-card">
+    <span class="day-badge" id="today-badge">DAY 1</span>
+    <h3 id="today-title">商務問候與自我介紹</h3>
+    <p class="topic" id="today-topic">🎯 直銷業務開場白 · 第一印象英文</p>
+    <div class="lesson-meta">
+      <div class="lesson-meta-item">⏱️ <span>約15分鐘</span></div>
+      <div class="lesson-meta-item">📝 <span id="today-vocab-count">10個單字</span></div>
+      <div class="lesson-meta-item">🎤 <span>口說練習</span></div>
+    </div>
+    <button class="start-btn" onclick="openLesson(state.currentDay)">▶ 開始今日課程</button>
+  </div>
+
+  <div class="quick-stats">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-days">0</div>
+      <div class="stat-label">已完成天數</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-words">0</div>
+      <div class="stat-label">學過單字</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-xp">0</div>
+      <div class="stat-label">總XP</div>
+    </div>
+  </div>
+
+  <div class="progress-overview">
+    <h3>📊 六大能力進度</h3>
+    <div class="progress-row"><div class="progress-label">🎧 聽力</div><div class="progress-track"><div class="progress-fill" id="p-listening" style="width:0%;background:#3B82F6"></div></div><div class="progress-pct" id="pp-listening">0%</div></div>
+    <div class="progress-row"><div class="progress-label">🗣️ 口說</div><div class="progress-track"><div class="progress-fill" id="p-speaking" style="width:0%;background:#8B5CF6"></div></div><div class="progress-pct" id="pp-speaking">0%</div></div>
+    <div class="progress-row"><div class="progress-label">📖 單字</div><div class="progress-track"><div class="progress-fill" id="p-vocab" style="width:0%;background:#10B981"></div></div><div class="progress-pct" id="pp-vocab">0%</div></div>
+    <div class="progress-row"><div class="progress-label">✉️ Email</div><div class="progress-track"><div class="progress-fill" id="p-email" style="width:0%;background:#F59E0B"></div></div><div class="progress-pct" id="pp-email">0%</div></div>
+    <div class="progress-row"><div class="progress-label">🤝 會議</div><div class="progress-track"><div class="progress-fill" id="p-meeting" style="width:0%;background:#EF4444"></div></div><div class="progress-pct" id="pp-meeting">0%</div></div>
+  </div>
+</div>
+
+<!-- ═══════ CURRICULUM PAGE ═══════ -->
+<div id="page-curriculum" class="page">
+  <div class="page-header">
+    <h2>180天課程計畫 📋</h2>
+    <p>六大階段 · 循序漸進 · 直銷商務英文</p>
+  </div>
+  <div class="phase-grid" id="phase-grid"></div>
+</div>
+
+<!-- ═══════ PROGRESS PAGE ═══════ -->
+<div id="page-progress" class="page">
+  <div class="page-header">
+    <h2>學習進度 📈</h2>
+    <p>追蹤您的英文成長曲線</p>
+  </div>
+  <div class="chart-container">
+    <div class="chart-title">📅 本週每日完成課程數</div>
+    <div class="chart-bars" id="week-chart"></div>
+  </div>
+  <div class="section-title">🎯 能力評估</div>
+  <div class="skill-grid" id="skill-grid"></div>
+  <div class="chart-container">
+    <div class="chart-title">🏆 成就徽章</div>
+    <div id="badges-area" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;"></div>
+  </div>
+  <div class="chart-container">
+    <div class="chart-title">📊 學習統計</div>
+    <div id="stats-detail"></div>
+  </div>
+</div>
+
+<!-- ═══════ SETTINGS PAGE ═══════ -->
+<div id="page-settings" class="page">
+  <div class="page-header">
+    <h2>設定 ⚙️</h2>
+    <p>個人化您的學習體驗</p>
+  </div>
+  <div class="settings-section">
+    <h3>學習設定</h3>
+    <div class="settings-item"><div><div class="settings-item-label">每日提醒</div><div class="settings-item-sub">設定學習時間通知</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+    <div class="settings-item"><div><div class="settings-item-label">聲音效果</div><div class="settings-item-sub">答題音效與鼓勵聲</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+    <div class="settings-item"><div><div class="settings-item-label">自動播放語音</div><div class="settings-item-sub">開啟新單字時自動朗讀</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+    <div class="settings-item"><div><div class="settings-item-label">顯示音標</div><div class="settings-item-sub">在單字卡顯示KK音標</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+  </div>
+  <div class="settings-section">
+    <h3>學習難度</h3>
+    <div class="settings-item"><div><div class="settings-item-label">目前等級</div><div class="settings-item-sub">基礎商務英文 (2000字基礎)</div></div><span class="chip chip-blue">基礎</span></div>
+    <div class="settings-item"><div><div class="settings-item-label">每日單字量</div><div class="settings-item-sub">每天學習的新單字數</div></div><button class="select-pill" id="words-per-day-btn" onclick="cycleWordsPerDay()">10個</button></div>
+  </div>
+  <div class="settings-section">
+    <h3>學習者資料</h3>
+    <div class="settings-item"><div><div class="settings-item-label">暱稱</div><div class="settings-item-sub" id="user-name-display">點擊設定暱稱</div></div><button class="select-pill" onclick="setUserName()">修改</button></div>
+    <div class="settings-item"><div><div class="settings-item-label">學習目標</div><div class="settings-item-sub">直銷業務 · 會議 · Email</div></div><span class="chip chip-green">已設定</span></div>
+  </div>
+  <div class="settings-section">
+    <h3>資料管理</h3>
+    <div class="settings-item" onclick="resetProgress()" style="cursor:pointer"><div><div class="settings-item-label" style="color:var(--danger)">重置學習進度</div><div class="settings-item-sub">清除所有學習記錄（不可復原）</div></div><span style="font-size:18px;color:var(--text-muted)">›</span></div>
+  </div>
+  <div style="text-align:center;padding:24px 16px;color:var(--text-muted);font-size:12px">
+    <div style="font-size:32px;margin-bottom:8px">💼</div>
+    <div style="font-weight:700;font-size:14px;color:var(--text)">BizEnglish Pro v1.0</div>
+    <div>180天直銷商務英文全攻略</div>
+    <div style="margin-top:4px">聽說讀寫 · 會議Email全方位</div>
+  </div>
+</div>
+
+<!-- ═══════ LESSON PAGE ═══════ -->
+<div id="lesson-page">
+  <div class="lesson-top-bar">
+    <button class="back-btn" onclick="closeLesson()">←</button>
+    <div class="lesson-title" id="lesson-page-title">Day 1</div>
+    <span class="chip chip-blue" id="lesson-day-chip">DAY 1</span>
+  </div>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="lesson-progress-fill" style="width:16%"></div></div>
+  <div class="lesson-tabs" id="lesson-tabs">
+    <button class="tab-btn active" onclick="switchTab('vocab')">📖 單字</button>
+    <button class="tab-btn" onclick="switchTab('phrases')">💬 句型</button>
+    <button class="tab-btn" onclick="switchTab('dialogue')">🎭 對話</button>
+    <button class="tab-btn" onclick="switchTab('email')">✉️ Email</button>
+    <button class="tab-btn" onclick="switchTab('speaking')">🎤 口說</button>
+    <button class="tab-btn" onclick="switchTab('quiz')">✅ 測驗</button>
+  </div>
+
+  <!-- VOCAB -->
+  <div class="tab-content active" id="tab-vocab">
+    <div class="vocab-nav">
+      <button class="vocab-nav-btn" onclick="prevVocab()">← 上一個</button>
+      <span class="vocab-counter" id="vocab-counter">1 / 10</span>
+      <button class="vocab-nav-btn" onclick="nextVocab()">下一個 →</button>
+    </div>
+    <div class="vocab-card" id="current-vocab-card" onclick="flipVocabCard()">
+      <div class="vocab-card-inner">
+        <div class="vocab-front">
+          <div class="word" id="vocab-word">introduce</div>
+          <div class="phonetic" id="vocab-phonetic">/ˌɪntrəˈduːs/</div>
+          <div class="chip chip-blue" id="vocab-type" style="margin-top:10px;background:rgba(255,255,255,.2);color:#fff">動詞</div>
+          <button class="vocab-speak-btn" id="vocab-speak-word-btn" onclick="event.stopPropagation();speakVocabWord()">🔊 朗讀單字</button>
+          <div class="tap-hint">👆 點擊卡片翻面看中文</div>
+        </div>
+        <div class="vocab-back">
+          <div class="meaning-zh" id="vocab-zh">介紹</div>
+          <div class="meaning-en" id="vocab-en-def">to present someone to others</div>
+          <div class="example" id="vocab-example">"Let me introduce myself."</div>
+          <button class="vocab-speak-back-btn" onclick="event.stopPropagation();speakVocabExample()">🔊 朗讀例句</button>
+        </div>
+      </div>
+    </div>
+    <div class="know-row">
+      <button class="know-btn no" onclick="markVocab(false)">😅 還不熟</button>
+      <button class="know-btn yes" onclick="markVocab(true)">😊 認識了！</button>
+    </div>
+    <div style="margin-top:20px">
+      <div style="font-size:15px;font-weight:700;margin-bottom:10px;padding:0 2px">📚 本課全部單字</div>
+      <div id="vocab-list-all"></div>
+    </div>
+  </div>
+
+  <!-- PHRASES -->
+  <div class="tab-content" id="tab-phrases">
+    <div style="margin-bottom:12px"><div class="chip chip-purple">本日重點句型</div></div>
+    <div id="phrases-list"></div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div class="tab-content" id="tab-dialogue">
+    <div class="dialogue-scene">
+      <div class="dialogue-scene-title">🎬 情境說明</div>
+      <p id="dialogue-scene-text">載入中...</p>
+    </div>
+    <div id="dialogue-content"></div>
+    <div style="background:var(--warning-light);border-radius:var(--radius-sm);padding:14px;margin-top:8px">
+      <div style="font-size:13px;font-weight:700;color:var(--warning);margin-bottom:6px">💡 學習重點</div>
+      <div id="dialogue-tips" style="font-size:13px;color:var(--text);line-height:1.7;white-space:pre-line"></div>
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="tab-content" id="tab-email">
+    <div class="chip chip-yellow" style="margin-bottom:12px">✉️ Email範本</div>
+    <div class="email-container" id="email-content"></div>
+    <div style="background:var(--success-light);border-radius:var(--radius-sm);padding:14px;margin-top:16px">
+      <div style="font-size:13px;font-weight:700;color:var(--success);margin-bottom:8px">✏️ Email寫作技巧</div>
+      <div id="email-tips" style="font-size:13px;line-height:1.7;color:var(--text);white-space:pre-line"></div>
+    </div>
+    <div style="margin-top:16px">
+      <div style="font-size:15px;font-weight:700;margin-bottom:10px">🖊️ 填空練習</div>
+      <div id="email-exercise" style="background:var(--card);border-radius:var(--radius-sm);padding:16px;box-shadow:var(--shadow);font-size:14px;line-height:2;white-space:pre-wrap;font-style:italic;color:var(--text-muted)"></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="checkEmailExercise()">查看答案</button>
+    </div>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="tab-content" id="tab-speaking">
+    <div id="speaking-content"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="tab-content" id="tab-quiz">
+    <div id="quiz-content"></div>
+  </div>
+</div>
+
+<!-- Bottom Nav -->
+<nav id="nav">
+  <button class="nav-btn active" onclick="showPage('home')" id="nav-home"><span class="nav-icon">🏠</span>首頁</button>
+  <button class="nav-btn" onclick="showPage('curriculum')" id="nav-curriculum"><span class="nav-icon">📋</span>課程</button>
+  <button class="nav-btn" onclick="showPage('progress')" id="nav-progress"><span class="nav-icon">📈</span>進度</button>
+  <button class="nav-btn" onclick="showPage('settings')" id="nav-settings"><span class="nav-icon">⚙️</span>設定</button>
+</nav>
+
+<script>
+// ══════════════════════════════════════════════
+//  CURRICULUM DATA
+// ══════════════════════════════════════════════
+const PHASES = [
+  { id:1, name:"Phase 1：商務基礎", days:"1-30", icon:"🌱", color:"#10B981", bg:"#D1FAE5", desc:"問候、自我介紹、基本商務用語",
+    topics:["商務問候與自我介紹","公司職稱與部門","約定時間與會議","表達感謝與道歉","電話英文基礎","介紹產品基礎","詢問與回答","數字與金額","Yes/No的商務說法","確認與重複","Opening a Meeting","Meeting Agenda","Introducing a Product","Making Requests","Email Opening","Email Closing","CC/BCC Etiquette","Follow-up Basics","Greeting Clients","Small Talk","Describing Your Company","Your Role in Direct Sales","Team Introduction","Network Building","Referral Language","Phase 1 Review","Phase 1 Speaking Test","Phase 1 Email Practice","Phase 1 Listening","Phase 1 Final Test"] },
+  { id:2, name:"Phase 2：會議英文", days:"31-60", icon:"🤝", color:"#3B82F6", bg:"#DBEAFE", desc:"會議開場、發言、意見表達、結尾",
+    topics:["Opening a Meeting Formally","Setting the Agenda","Asking for Opinions","Giving Your Opinion","Agreeing Politely","Disagreeing Politely","Interrupting Gracefully","Clarifying Points","Summarizing Discussion","Action Items","Presenting Sales Data","Monthly Review Meeting","Quarterly Planning","Goal Setting Language","KPI Discussion","Problem Solving Meeting","Brainstorming Session","Decision Making","Voting & Consensus","Meeting Minutes","Video Conference Tips","Virtual Meeting Phrases","Technical Issues","Wrap-Up & Next Steps","Motivational Phrases","Team Building Language","Celebrating Achievements","Handling Conflicts","Meeting Follow-up","Phase 2 Test"] },
+  { id:3, name:"Phase 3：Email精通", days:"61-90", icon:"✉️", color:"#F59E0B", bg:"#FEF3C7", desc:"Email格式、商務信件寫作、回覆技巧",
+    topics:["Email Structure Review","Subject Line Writing","Professional Salutations","Body Paragraph 1","Body Paragraph 2","Polite Requests in Email","Attaching Files","Scheduling via Email","Declining Invitations","Accepting Invitations","Complaint Email","Apology Email","Thank You Email","Introduction Email","Follow-up Email","Proposal Email","Report Email","Inquiry Email","Order Confirmation","Payment Email","Newsletter Writing","Announcement Email","Reminder Email","Congratulations Email","Farewell Email","Email Tone: Formal vs Informal","Proofreading Tips","Common Email Mistakes","Email Response Speed","Phase 3 Test"] },
+  { id:4, name:"Phase 4：直銷業務", days:"91-120", icon:"💎", color:"#8B5CF6", bg:"#EDE9FE", desc:"產品介紹、招募、業績報告、激勵演講",
+    topics:["Product Presentation Basics","Features vs Benefits","Handling Objections 1","Handling Objections 2","Closing a Sale","Recruiting Language","Explaining the Business Model","Income Opportunity Talk","Testimonial Sharing","Team Building Pitch","Weekly Sales Report","Rank Advancement Talk","Recognition Speech","Motivation Morning Talk","Goal Achievement Share","Conference Call Opening","Webinar Hosting","Zoom Meeting","One-on-One Coaching","Group Training","Customer Retention","Repeat Order Follow-up","Referral Program","VIP Customer Language","Loyalty Program","Handling Rejection","Staying Positive","Mindset Language","Success Story Sharing","Phase 4 Test"] },
+  { id:5, name:"Phase 5：進階溝通", days:"121-150", icon:"🚀", color:"#EF4444", bg:"#FEE2E2", desc:"談判、演講、跨文化溝通、領導語言",
+    topics:["Negotiation Basics","Making Concessions","Win-Win Language","Price Negotiation","Contract Terms","Public Speaking Openers","Storytelling in Business","Data Visualization Talk","Q&A Handling","Closing a Presentation","Cross-Cultural Awareness","International Etiquette","Working with Overseas Teams","Cultural Sensitivity","Time Zone Communication","Leadership Language","Giving Feedback","Receiving Feedback","Coaching Questions","Empowering Language","Crisis Communication","Bad News Delivery","Problem Escalation","Apology & Recovery","Media Interaction","Formal Report Language","Executive Summary","Board Meeting Language","Annual Review","Phase 5 Test"] },
+  { id:6, name:"Phase 6：綜合精通", days:"151-180", icon:"🏆", color:"#EC4899", bg:"#FCE7F3", desc:"整合運用、模擬考試、商務英文流利表達",
+    topics:["Full Meeting Simulation 1","Full Meeting Simulation 2","Full Meeting Simulation 3","Full Meeting Simulation 4","Full Meeting Simulation 5","Email Marathon 1","Email Marathon 2","Email Marathon 3","Email Marathon 4","Email Marathon 5","Sales Pitch Competition","Objection Master Class","Closing Techniques","Power Phrases Review","Vocabulary 500 Review","Listening Challenge 1","Listening Challenge 2","Speaking Marathon 1","Speaking Marathon 2","Speed Reading","Mock TOEIC Business","Mock Interview","Elevator Pitch","Boardroom Simulation","Company Town Hall","180-Day Review Part 1","180-Day Review Part 2","Final Speaking Test","Final Email Test","Graduation Day 🎓"] }
+];
+
+// ══════════════════════════════════════════════
+//  LESSON CONTENT (Full data for Day 1 & 2, auto-generated for rest)
+// ══════════════════════════════════════════════
+const FULL_LESSONS = {
+1: {
+  title:"商務問候與自我介紹", phase:1,
+  vocab:[
+    {word:"introduce",phonetic:"/ˌɪntrəˈduːs/",zh:"介紹",type:"動詞",def:"to present someone to others",example:"Allow me to introduce myself. I'm Sarah."},
+    {word:"colleague",phonetic:"/ˈkɒliːɡ/",zh:"同事",type:"名詞",def:"a person you work with",example:"These are my colleagues from the sales team."},
+    {word:"represent",phonetic:"/ˌreprɪˈzent/",zh:"代表",type:"動詞",def:"to act officially for a company",example:"I represent NovaStar Direct Sales."},
+    {word:"pleasure",phonetic:"/ˈpleʒər/",zh:"榮幸",type:"名詞",def:"a feeling of happiness",example:"It's a pleasure to meet you."},
+    {word:"executive",phonetic:"/ɪɡˈzekjətɪv/",zh:"主管",type:"名詞",def:"a senior manager in a company",example:"She is a top executive."},
+    {word:"position",phonetic:"/pəˈzɪʃən/",zh:"職位",type:"名詞",def:"a job or role in a company",example:"I hold the position of Regional Director."},
+    {word:"network",phonetic:"/ˈnetwɜːrk/",zh:"人脈",type:"名詞",def:"a group of connected people",example:"We network at industry events."},
+    {word:"opportunity",phonetic:"/ˌɒpəˈtjuːnəti/",zh:"機會",type:"名詞",def:"a chance to achieve something",example:"This is a great business opportunity."},
+    {word:"connect",phonetic:"/kəˈnekt/",zh:"聯繫",type:"動詞",def:"to establish contact",example:"Let's connect on LinkedIn."},
+    {word:"professional",phonetic:"/prəˈfeʃənəl/",zh:"專業的",type:"形容詞",def:"relating to a skilled job",example:"She is a true professional."}
+  ],
+  phrases:[
+    {en:"Good morning, everyone. Shall we get started?",zh:"早安各位，我們開始吧？",context:"開會最常用的第一句話"},
+    {en:"Allow me to introduce myself.",zh:"請讓我自我介紹。",context:"正式場合的自我介紹開場"},
+    {en:"I'm [Name], [Position] at [Company].",zh:"我是[姓名]，在[公司]擔任[職位]。",context:"標準商務自我介紹公式"},
+    {en:"It's a pleasure to meet you.",zh:"很高興認識您。",context:"初次見面的禮貌用語"},
+    {en:"I look forward to working with you.",zh:"我期待與您合作。",context:"表達合作意願"},
+    {en:"Here's my business card.",zh:"這是我的名片。",context:"遞名片時的標準說法"},
+    {en:"What do you do?",zh:"您從事什麼行業？",context:"詢問對方職業的自然問法"},
+    {en:"I specialize in direct sales and team building.",zh:"我專注於直銷業務和團隊建設。",context:"直銷業務的標準自我定位"}
+  ],
+  dialogue:{
+    scene:"📍 公司新人訓練會議室 | Lisa（新業務代表）第一次參加公司晨會",
+    lines:[
+      {speaker:"Manager",avatar:"👔",en:"Good morning, team! Before we start, let's welcome our new colleague.",zh:"早安，團隊！在開始之前，讓我們歡迎我們的新同事。",right:false},
+      {speaker:"Lisa",avatar:"👩",en:"Good morning, everyone! Allow me to introduce myself. I'm Lisa Wang, your new Business Development Associate.",zh:"早安，大家好！請讓我自我介紹。我是Lisa Wang，你們的新業務拓展專員。",right:true},
+      {speaker:"Manager",avatar:"👔",en:"Welcome, Lisa! Can you tell us a bit about your background?",zh:"歡迎，Lisa！你能告訴我們一些你的背景嗎？",right:false},
+      {speaker:"Lisa",avatar:"👩",en:"Of course! I have three years of sales experience, and I'm very excited about this opportunity in direct sales.",zh:"當然！我有三年的銷售經驗，非常高興有這個直銷業務的機會。",right:true},
+      {speaker:"Manager",avatar:"👔",en:"Excellent! I look forward to seeing you grow with our team.",zh:"太好了！我期待看到你在我們團隊中成長。",right:false},
+      {speaker:"Lisa",avatar:"👩",en:"Thank you so much. I look forward to working with everyone here.",zh:"非常感謝。我期待與這裡的每個人合作。",right:true}
+    ],
+    tips:"✅ 「Allow me to introduce myself」比直接說「I am」更正式禮貌\n✅ 自我介紹時一定要說出姓名+職稱\n✅ 結尾用「I look forward to...」表達期待，讓人印象深刻"
+  },
+  email:{
+    subject:"Introduction – New Business Associate | Lisa Wang",
+    from:"lisa.wang@novastar.com",
+    to:"team@novastar.com",
+    body:`Dear Team,
+
+My name is Lisa Wang, and I am your new Business Development Associate joining the NovaStar family today.
+
+I am excited to be part of this incredible team and look forward to contributing to our shared goals. I have three years of experience in sales and customer relationship management.
+
+Please feel free to reach out to me anytime. I would love to connect with each of you!
+
+Best regards,
+Lisa Wang
+Business Development Associate | NovaStar Direct Sales
+📱 0912-345-678`,
+    highlights:["Business Development Associate","excited to be part of","look forward to","reach out to me","Best regards"],
+    tips:"📌 件名寫上姓名和職稱\n📌 開頭段：自我介紹+職稱\n📌 中間段：背景+表達熱忱\n📌 結尾：邀請互動+感謝\n📌 簽名檔：姓名、職稱、電話缺一不可",
+    exercise:"Dear _____ (Team/Boss),\n\nMy name is _____, and I am your new _____.\n\nI am _____ to be part of this team and look forward to _____.\n\nBest _____,\n[Your Name]"
+  },
+  speaking:[
+    {prompt:"Introduce yourself as a direct sales associate.",zh:"以直銷業務員身分做自我介紹",answer:"Good morning! My name is [Your Name]. I'm a Business Associate at [Company]. I specialize in direct sales and helping customers find the right products. I'm passionate about building relationships. It's great to meet you!"},
+    {prompt:"Say goodbye and suggest a follow-up meeting.",zh:"結束對話並建議下次會議",answer:"It was great meeting you today! I'd love to follow up on our conversation. Are you available for a call next week? I'll send you an email. Thank you for your time!"}
+  ],
+  quiz:[
+    {q:"Which phrase is the most professional self-introduction?",opts:["My name is...","Allow me to introduce myself. I'm...","Hey, I'm...","Call me..."],answer:1},
+    {q:"Which is the correct formal email closing?",opts:["Bye!","See ya","Best regards,","Thanks!!!"],answer:2},
+    {q:"What does 'colleague' mean?",opts:["Boss","Customer","Co-worker","Manager"],answer:2},
+    {q:"Fill in: 'It's a _____ to meet you.'",opts:["happy","pleasure","nice","glad"],answer:1},
+    {q:"In a business email, the subject line should be:",opts:["Long and detailed","Short and clear","Left blank","In Chinese"],answer:1}
+  ]
+},
+2: {
+  title:"公司職稱與部門", phase:1,
+  vocab:[
+    {word:"director",phonetic:"/dɪˈrektər/",zh:"總監",type:"名詞",def:"head of a department",example:"She is the Sales Director."},
+    {word:"manager",phonetic:"/ˈmænɪdʒər/",zh:"經理",type:"名詞",def:"responsible for a team",example:"Our manager set new goals."},
+    {word:"department",phonetic:"/dɪˈpɑːrtmənt/",zh:"部門",type:"名詞",def:"a section of an organization",example:"I work in the marketing department."},
+    {word:"headquarters",phonetic:"/ˈhedkwɔːrtərz/",zh:"總部",type:"名詞",def:"main office of a company",example:"Our headquarters is in Taipei."},
+    {word:"branch",phonetic:"/bræntʃ/",zh:"分公司",type:"名詞",def:"a local office of a company",example:"We have branches across Asia."},
+    {word:"staff",phonetic:"/stæf/",zh:"員工",type:"名詞",def:"all the workers in an organization",example:"Our staff is very dedicated."},
+    {word:"promotion",phonetic:"/prəˈmoʊʃən/",zh:"晉升",type:"名詞",def:"a move to a higher rank",example:"She received a promotion last quarter."},
+    {word:"responsible",phonetic:"/rɪˈspɒnsɪbl/",zh:"負責的",type:"形容詞",def:"having a duty to deal with something",example:"I am responsible for training."},
+    {word:"achievement",phonetic:"/əˈtʃiːvmənt/",zh:"成就",type:"名詞",def:"something accomplished successfully",example:"This is a great achievement."},
+    {word:"supervisor",phonetic:"/ˈsuːpərvaɪzər/",zh:"主管",type:"名詞",def:"person who oversees others' work",example:"My supervisor reviewed my report."}
+  ],
+  phrases:[
+    {en:"I'm in charge of the regional sales team.",zh:"我負責管理區域銷售團隊。",context:"說明自己的職責範圍"},
+    {en:"She reports directly to the CEO.",zh:"她直接向CEO匯報。",context:"說明匯報關係"},
+    {en:"Our marketing department handles all promotions.",zh:"我們的行銷部門負責所有促銷。",context:"介紹部門職責"},
+    {en:"I was recently promoted to Senior Manager.",zh:"我最近升任為高級經理。",context:"分享自己的晉升"},
+    {en:"Who is responsible for this project?",zh:"這個專案由誰負責？",context:"詢問負責人"},
+    {en:"Let me introduce you to our team.",zh:"讓我為你介紹我們的團隊。",context:"帶領新人認識團隊"}
+  ],
+  dialogue:{
+    scene:"📍 公司接待大廳 | Tom（業務代表）向新客戶介紹公司架構",
+    lines:[
+      {speaker:"Tom",avatar:"👨",en:"Welcome to NovaStar! Let me give you a quick overview of our company structure.",zh:"歡迎來到NovaStar！讓我快速介紹一下我們的公司架構。",right:true},
+      {speaker:"Client",avatar:"🧑",en:"Great! I'd love to understand how you're organized.",zh:"太好了！我很想了解你們的組織架構。",right:false},
+      {speaker:"Tom",avatar:"👨",en:"We have three main departments: Sales, Marketing, and Operations. I'm in the Sales department.",zh:"我們有三個主要部門：銷售、行銷和運營。我在銷售部門。",right:true},
+      {speaker:"Client",avatar:"🧑",en:"Who is the head of your company?",zh:"誰是貴公司的負責人？",right:false},
+      {speaker:"Tom",avatar:"👨",en:"Our CEO is Ms. Jennifer Lin. She founded the company 10 years ago. I report to our Regional Director.",zh:"我們的CEO是Jennifer Lin女士。她十年前創立了公司。我向區域總監匯報。",right:true}
+    ],
+    tips:"✅ 'I'm in charge of...' = 我負責...\n✅ 'She reports to...' 說明匯報關係\n✅ 介紹架構由上到下：CEO → Director → Manager → Staff"
+  },
+  email:{
+    subject:"Company Introduction & Team Overview",
+    from:"tom.chen@novastar.com",
+    to:"client@company.com",
+    body:`Dear Mr. Johnson,
+
+Thank you for your interest in NovaStar Direct Sales.
+
+NovaStar was founded in 2014 and operates across 15 countries. Our headquarters is in Taipei, with regional branches throughout Asia Pacific.
+
+Our team has three key departments:
+• Sales Department – led by Director Sarah Kim
+• Marketing Department – led by Director Michael Chang
+• Operations Department – led by Director Amy Liu
+
+I serve as Business Development Manager, responsible for new client acquisition.
+
+Please feel free to contact me with any questions.
+
+Best regards,
+Tom Chen
+Business Development Manager | NovaStar`,
+    highlights:["headquarters","regional branches","responsible for","led by"],
+    tips:"📌 用 bullet points 讓架構一目了然\n📌 介紹公司時提供具體數字更有說服力\n📌 結尾永遠邀請對方聯繫",
+    exercise:"Dear Mr. _____,\n\nThank you for your _____ in NovaStar.\n\nOur _____ (headquarters) is in Taipei.\nI am _____ for new client acquisition.\n\nBest regards,\n[Your Name]"
+  },
+  speaking:[
+    {prompt:"Describe your role and department.",zh:"介紹你在公司的角色和部門",answer:"I work in the Sales Department at NovaStar. I'm a Business Development Associate, responsible for building client relationships. I report to our Regional Director. Our team's goal is to grow our network across Asia Pacific."},
+    {prompt:"Explain your company structure to a new client.",zh:"向新客戶解釋公司架構",answer:"Our company has three main departments: Sales, Marketing, and Operations. At the top, we have our CEO, and each department is led by a director. I'm part of Sales, handling new business development."}
+  ],
+  quiz:[
+    {q:"What does 'headquarters' mean?",opts:["Branch office","Main office","Client's office","Meeting room"],answer:1},
+    {q:"Which sentence is correct?",opts:["I am responsible for the team.","I responsible team.","Me responsible for team.","I is responsible team."],answer:0},
+    {q:"What is a 'promotion' in business?",opts:["A marketing ad","Moving to a higher position","A company event","A discount"],answer:1},
+    {q:"'She _____ directly to the CEO.'",opts:["answer","reports","says","talks"],answer:1},
+    {q:"What does 'department' mean?",opts:["A company branch","A section of an organization","A meeting","A target"],answer:1}
+  ]
+}
+};
+
+function getDayData(day) {
+  if (FULL_LESSONS[day]) return FULL_LESSONS[day];
+  const phaseIdx = Math.min(Math.floor((day-1)/30), 5);
+  const phase = PHASES[phaseIdx];
+  const topicIdx = (day-1) % 30;
+  const topic = phase.topics[topicIdx] || `Day ${day} Lesson`;
+  return {
+    title: topic, phase: phaseIdx+1,
+    vocab:[
+      {word:"agenda",phonetic:"/əˈdʒendə/",zh:"議程",type:"名詞",def:"a list of items to discuss",example:"Please review the meeting agenda."},
+      {word:"confirm",phonetic:"/kənˈfɜːrm/",zh:"確認",type:"動詞",def:"to make sure something is correct",example:"Can you confirm the meeting time?"},
+      {word:"schedule",phonetic:"/ˈskedʒuːl/",zh:"時程",type:"名詞",def:"a plan of events and times",example:"Let's schedule a meeting for Monday."},
+      {word:"proposal",phonetic:"/prəˈpoʊzəl/",zh:"提案",type:"名詞",def:"a plan put forward",example:"I submitted my business proposal."},
+      {word:"client",phonetic:"/ˈklaɪənt/",zh:"客戶",type:"名詞",def:"a person using a company's services",example:"Our client is very satisfied."},
+      {word:"target",phonetic:"/ˈtɑːrɡɪt/",zh:"目標",type:"名詞",def:"an objective to achieve",example:"We exceeded our sales target."},
+      {word:"revenue",phonetic:"/ˈrevənjuː/",zh:"營收",type:"名詞",def:"income generated by a business",example:"Our revenue grew 30% this year."},
+      {word:"effective",phonetic:"/ɪˈfektɪv/",zh:"有效的",type:"形容詞",def:"producing the desired result",example:"This is a very effective strategy."},
+      {word:"strategy",phonetic:"/ˈstrætədʒi/",zh:"策略",type:"名詞",def:"a plan to achieve goals",example:"Our marketing strategy is working well."},
+      {word:"performance",phonetic:"/pərˈfɔːrməns/",zh:"績效",type:"名詞",def:"how well something is done",example:"Your performance this quarter is excellent."}
+    ],
+    phrases:[
+      {en:"Let's get down to business.",zh:"讓我們言歸正傳。",context:"開始正式討論時使用"},
+      {en:"I'd like to bring up a key point.",zh:"我想提出一個重要觀點。",context:"在會議中發言"},
+      {en:"Could you clarify that?",zh:"您能解釋一下嗎？",context:"請求對方說明清楚"},
+      {en:"Let me follow up on that.",zh:"讓我跟進這件事。",context:"表示會繼續處理"},
+      {en:"We're on the right track.",zh:"我們在正確的軌道上。",context:"表示進展良好"},
+      {en:"Thank you all for your hard work.",zh:"感謝大家的努力。",context:"會議結尾感謝語"}
+    ],
+    dialogue:{
+      scene:`📍 場景：${topic} 商務情境練習`,
+      lines:[
+        {speaker:"Manager",avatar:"👔",en:"Good morning. Let's begin today's session on "+topic+".",zh:"早安。讓我們開始今天的課程。",right:false},
+        {speaker:"Team",avatar:"👥",en:"Good morning! We're ready.",zh:"早安！我們準備好了。",right:true},
+        {speaker:"Manager",avatar:"👔",en:"Great. First, let's review our key vocabulary.",zh:"很好。首先讓我們複習重點詞彙。",right:false},
+        {speaker:"Team",avatar:"👥",en:"Could we also go over the email templates?",zh:"我們也可以複習Email範本嗎？",right:true},
+        {speaker:"Manager",avatar:"👔",en:"Absolutely. We'll cover everything step by step.",zh:"當然，我們會一步一步涵蓋所有內容。",right:false}
+      ],
+      tips:"✅ 每天練習5個新句型\n✅ 大聲朗讀對話至少3次\n✅ 嘗試替換單字，創造自己的句子"
+    },
+    email:{
+      subject:`Business Update – ${topic}`,
+      from:"you@novastar.com",
+      to:"team@novastar.com",
+      body:`Dear Team,
+
+I hope this email finds you well.
+
+I am writing to update you on our progress regarding ${topic}.
+
+Key highlights this week:
+• We have made significant progress on our targets
+• Our team is working effectively together
+• Next steps will be shared in tomorrow's meeting
+
+Please review the materials before our next session.
+
+Best regards,
+[Your Name]
+[Your Position] | NovaStar Direct Sales`,
+      highlights:["I hope this email finds you well","significant progress","Best regards"],
+      tips:"📌 開頭用「I hope this email finds you well」\n📌 用 bullet points 列出重點\n📌 結尾提醒行動事項",
+      exercise:"Dear _____,\n\nI hope this email finds you _____.\n\nI am writing to update you on _____.\n\nBest _____,\n[Your Name]"
+    },
+    speaking:[
+      {prompt:`Practice speaking about: ${topic}`,zh:"練習以英文介紹本日主題",answer:`Today I'd like to talk about ${topic}. This is important in our direct sales business. Communication must be clear, professional, and persuasive. Thank you for listening.`}
+    ],
+    quiz:[
+      {q:"What does 'agenda' mean?",opts:["A long report","A list of meeting topics","A sales target","A company policy"],answer:1},
+      {q:"Which phrase means 'to begin the main topic'?",opts:["Let's wrap up.","Let's get down to business.","Let's take a break.","Let's follow up."],answer:1},
+      {q:"What is 'revenue'?",opts:["Company expenses","Income earned by a business","Number of employees","Meeting minutes"],answer:1},
+      {q:"'I'd like to _____ a key point.'",opts:["speak","bring up","make","do"],answer:1},
+      {q:"What does 'confirm' mean?",opts:["To cancel","To make sure something is correct","To disagree","To introduce"],answer:1}
+    ]
+  };
+}
+
+// ══════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════
+let state = {
+  currentDay:1, completedDays:[], streak:0,
+  lastStudyDate:null, totalXP:0, wordsLearned:0,
+  skills:{listening:0,speaking:0,vocab:0,email:0,meeting:0},
+  userName:""
+};
+
+let currentLessonDay = 1;
+let currentVocabIndex = 0;
+let currentLessonData = null;
+let currentTab = 'vocab';
+let quizAnswered = [];
+let quizScore = 0;
+let isRecording = false;
+let recordTimer = null;
+
+function saveState() { try{localStorage.setItem('bizEng180',JSON.stringify(state));}catch(e){} }
+function loadState() {
+  try{
+    const s = localStorage.getItem('bizEng180');
+    if(s) state = {...state,...JSON.parse(s)};
+  }catch(e){}
+}
+
+// ══════════════════════════════════════════════
+//  UI
+// ══════════════════════════════════════════════
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('active');
+  if(name==='progress') renderProgress();
+  if(name==='curriculum') renderCurriculum();
+}
+
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show'+(type?' '+type:'');
+  setTimeout(()=>t.className='toast',2500);
+}
+
+// ══════════════════════════════════════════════
+//  HOME
+// ══════════════════════════════════════════════
+function renderHome() {
+  document.getElementById('home-date').textContent = new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('streak-count').textContent = (state.streak||0)+' 天連續學習';
+  document.getElementById('today-badge').textContent = 'DAY '+state.currentDay;
+  const ld = getDayData(state.currentDay);
+  document.getElementById('today-title').textContent = ld.title;
+  document.getElementById('today-topic').textContent = '🎯 Phase '+ld.phase+' · '+PHASES[ld.phase-1].name;
+  document.getElementById('today-vocab-count').textContent = ld.vocab.length+'個單字';
+  document.getElementById('stat-days').textContent = state.completedDays.length;
+  document.getElementById('stat-words').textContent = state.wordsLearned;
+  document.getElementById('stat-xp').textContent = state.totalXP;
+  const sk = ['listening','speaking','vocab','email','meeting'];
+  sk.forEach(s=>{
+    const v = state.skills[s]||0;
+    document.getElementById('p-'+s).style.width=v+'%';
+    document.getElementById('pp-'+s).textContent=v+'%';
+  });
+}
+
+// ══════════════════════════════════════════════
+//  CURRICULUM
+// ══════════════════════════════════════════════
+function renderCurriculum() {
+  const grid = document.getElementById('phase-grid');
+  grid.innerHTML = '';
+  PHASES.forEach((phase,pi)=>{
+    const start=pi*30+1, end=(pi+1)*30;
+    const done = state.completedDays.filter(d=>d>=start&&d<=end).length;
+    const pct = Math.round(done/30*100);
+    const div = document.createElement('div');
+    div.className='phase-card';
+    div.innerHTML=`
+      <div class="phase-header" onclick="togglePhase(${pi})">
+        <div class="phase-icon" style="background:${phase.bg}">${phase.icon}</div>
+        <div class="phase-info"><h3>${phase.name}</h3><p>${phase.desc}</p></div>
+        <div class="phase-days">Day ${phase.days} ›</div>
+      </div>
+      <div class="phase-progress-bar"><div class="phase-progress-fill" style="width:${pct}%;background:${phase.color}"></div></div>
+      <div class="days-list" id="phase-days-${pi}" style="display:none">
+        ${Array.from({length:30},(_,i)=>{
+          const day=start+i;
+          const isDone=state.completedDays.includes(day);
+          const isToday=day===state.currentDay;
+          const isLocked=day>state.currentDay;
+          const cls=isDone?'done':isToday?'today':isLocked?'locked':'';
+          return `<button class="day-btn ${cls}" onclick="${isLocked?'':('openLesson('+day+')')}" ${isLocked?'disabled':''}>${day}</button>`;
+        }).join('')}
+      </div>`;
+    grid.appendChild(div);
+  });
+}
+
+function togglePhase(pi) {
+  const el = document.getElementById('phase-days-'+pi);
+  el.style.display = el.style.display==='none'?'grid':'none';
+}
+
+// ══════════════════════════════════════════════
+//  PROGRESS
+// ══════════════════════════════════════════════
+function renderProgress() {
+  const days=['一','二','三','四','五','六','日'];
+  const vals=[1,2,1,0,2,1,state.completedDays.length%3];
+  const max=Math.max(...vals,1);
+  document.getElementById('week-chart').innerHTML=days.map((d,i)=>`
+    <div class="chart-bar-wrap">
+      <div class="chart-bar" style="height:${Math.round((vals[i]/max)*100)}px;background:${vals[i]>0?'var(--primary)':'var(--border)'}"></div>
+      <div class="chart-bar-label">${d}</div>
+    </div>`).join('');
+
+  const skillData=[
+    {name:'聽力',icon:'🎧',key:'listening',color:'#3B82F6'},
+    {name:'口說',icon:'🗣️',key:'speaking',color:'#8B5CF6'},
+    {name:'單字',icon:'📖',key:'vocab',color:'#10B981'},
+    {name:'Email',icon:'✉️',key:'email',color:'#F59E0B'}
+  ];
+  const r=26, circ=2*Math.PI*r;
+  document.getElementById('skill-grid').innerHTML=skillData.map(s=>{
+    const pct=state.skills[s.key]||0;
+    const dash=(pct/100)*circ;
+    return `<div class="skill-card">
+      <div class="skill-ring">
+        <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="${r}" fill="none" stroke="${s.color}33" stroke-width="5"/>
+        <circle cx="30" cy="30" r="${r}" fill="none" stroke="${s.color}" stroke-width="5" stroke-dasharray="${dash.toFixed(1)} ${circ.toFixed(1)}" stroke-linecap="round"/></svg>
+        <span class="skill-ring-icon">${s.icon}</span>
+      </div>
+      <div class="skill-name">${s.name}</div><div class="skill-pct">${pct}%</div>
+    </div>`;
+  }).join('');
+
+  const badges=[
+    {icon:'🌱',name:'初學者',earned:state.completedDays.length>=1},
+    {icon:'🔥',name:'7天連勝',earned:state.streak>=7},
+    {icon:'⚡',name:'30天達標',earned:state.completedDays.length>=30},
+    {icon:'💎',name:'詞彙達人',earned:state.wordsLearned>=100},
+    {icon:'✉️',name:'Email高手',earned:state.completedDays.filter(d=>d>=61&&d<=90).length>=15},
+    {icon:'🎤',name:'口說勇者',earned:(state.skills.speaking||0)>=50},
+    {icon:'🏆',name:'90天英雄',earned:state.completedDays.length>=90},
+    {icon:'🎓',name:'畢業生',earned:state.completedDays.length>=180}
+  ];
+  document.getElementById('badges-area').innerHTML=badges.map(b=>`
+    <div style="text-align:center;width:68px;opacity:${b.earned?1:.25}">
+      <div style="font-size:30px">${b.icon}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);margin-top:4px">${b.name}</div>
+    </div>`).join('');
+
+  const pct180=Math.round(state.completedDays.length/180*100);
+  document.getElementById('stats-detail').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px"><div style="font-size:26px;font-weight:900;color:var(--primary)">${state.completedDays.length}</div><div style="font-size:11px;color:var(--text-muted)">完成天數</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px"><div style="font-size:26px;font-weight:900;color:var(--secondary)">${state.streak}</div><div style="font-size:11px;color:var(--text-muted)">連續天數</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px"><div style="font-size:26px;font-weight:900;color:var(--success)">${state.wordsLearned}</div><div style="font-size:11px;color:var(--text-muted)">學習單字</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px"><div style="font-size:26px;font-weight:900;color:var(--warning)">${state.totalXP}</div><div style="font-size:11px;color:var(--text-muted)">總XP</div></div>
+    </div>
+    <div style="margin-top:12px;padding:12px;background:var(--bg);border-radius:10px">
+      <div style="font-size:13px;font-weight:700;margin-bottom:6px">🎯 180天目標進度</div>
+      <div style="height:12px;background:var(--border);border-radius:6px;overflow:hidden">
+        <div style="height:100%;width:${pct180}%;background:linear-gradient(90deg,var(--primary),var(--secondary));border-radius:6px"></div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:6px;text-align:right">${state.completedDays.length} / 180 天 (${pct180}%)</div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════
+//  LESSON
+// ══════════════════════════════════════════════
+function openLesson(day) {
+  currentLessonDay = day;
+  currentLessonData = getDayData(day);
+  currentVocabIndex = 0;
+  currentTab = 'vocab';
+  quizAnswered = [];
+  quizScore = 0;
+
+  document.getElementById('lesson-page-title').textContent = `Day ${day} · ${currentLessonData.title}`;
+  document.getElementById('lesson-day-chip').textContent = `DAY ${day}`;
+
+  renderVocabTab();
+  renderPhrasesTab();
+  renderDialogueTab();
+  renderEmailTab();
+  renderSpeakingTab();
+  renderQuizTab();
+  switchTab('vocab');
+
+  document.getElementById('lesson-page').style.display='block';
+  document.getElementById('lesson-page').scrollTop=0;
+}
+
+function closeLesson() {
+  document.getElementById('lesson-page').style.display='none';
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+tab+"'")) b.classList.add('active');
+  });
+  const tabs=['vocab','phrases','dialogue','email','speaking','quiz'];
+  const pct=((tabs.indexOf(tab)+1)/tabs.length)*100;
+  document.getElementById('lesson-progress-fill').style.width=pct+'%';
+}
+
+// ─── Vocab ───
+function renderVocabTab() {
+  updateVocabCard();
+  document.getElementById('vocab-list-all').innerHTML = currentLessonData.vocab.map((v,i)=>`
+    <div class="phrase-item" style="display:flex;align-items:flex-start;gap:10px">
+      <div style="flex:1;cursor:pointer" onclick="currentVocabIndex=${i};updateVocabCard();document.getElementById('tab-vocab').scrollTop=0;window.scrollTo(0,0)">
+        <div class="phrase-en">${v.word} <span style="font-size:12px;color:var(--text-muted);font-weight:400">${v.phonetic}</span></div>
+        <div class="phrase-zh">${v.zh} · <em style="font-size:12px;color:var(--text-muted)">${v.type}</em></div>
+        <div class="phrase-context">${v.example}</div>
+      </div>
+      <button onclick="speakTextWithCallback('${v.word}',1.0,null,null)" style="flex-shrink:0;width:38px;height:38px;border-radius:50%;border:none;background:var(--primary-light);color:var(--primary);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:2px" title="朗讀 ${v.word}">🔊</button>
+    </div>`).join('');
+}
+
+function updateVocabCard() {
+  const v = currentLessonData.vocab[currentVocabIndex];
+  if(!v) return;
+  document.getElementById('vocab-word').textContent = v.word;
+  document.getElementById('vocab-phonetic').textContent = v.phonetic;
+  document.getElementById('vocab-type').textContent = v.type;
+  document.getElementById('vocab-zh').textContent = v.zh;
+  document.getElementById('vocab-en-def').textContent = v.def;
+  document.getElementById('vocab-example').textContent = '"'+v.example+'"';
+  document.getElementById('vocab-counter').textContent = (currentVocabIndex+1)+' / '+currentLessonData.vocab.length;
+  document.getElementById('current-vocab-card').classList.remove('flipped');
+  // 自動朗讀單字（延遲100ms等DOM更新）
+  setTimeout(() => speakVocabWord(), 120);
+}
+
+function speakVocabWord() {
+  const v = currentLessonData.vocab[currentVocabIndex];
+  if(!v) return;
+  const btn = document.getElementById('vocab-speak-word-btn');
+  speakTextWithCallback(v.word, 1.0,
+    () => { if(btn){ btn.textContent='🔊 朗讀單字'; btn.classList.remove('playing'); } },
+    () => { if(btn){ btn.textContent='🔊 播放中...'; btn.classList.add('playing'); } }
+  );
+}
+
+function speakVocabExample() {
+  const v = currentLessonData.vocab[currentVocabIndex];
+  if(!v) return;
+  speakTextWithCallback(v.example, 0.85, null, null);
+}
+
+// 帶回呼的語音播放（支援 onstart / onend）
+function speakTextWithCallback(text, rate, onEnd, onStart) {
+  if(!('speechSynthesis' in window)) { showToast('🔇 此裝置不支援語音'); return; }
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'en-US';
+  utt.rate = rate || 0.85;
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Female')))
+          || voices.find(v => v.lang.startsWith('en'));
+  if(v) utt.voice = v;
+  if(onStart) utt.onstart = onStart;
+  if(onEnd) utt.onend = onEnd;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utt);
+}
+
+function flipVocabCard() { document.getElementById('current-vocab-card').classList.toggle('flipped'); }
+function nextVocab() {
+  if(currentVocabIndex<currentLessonData.vocab.length-1){ currentVocabIndex++; updateVocabCard(); }
+  else showToast('🎉 本課單字全部完成！','success');
+}
+function prevVocab() { if(currentVocabIndex>0){ currentVocabIndex--; updateVocabCard(); } }
+function markVocab(known) {
+  if(known){ showToast('✅ 太棒了！','success'); }
+  else { showToast('📝 多練習幾次！','warning'); }
+  state.wordsLearned = Math.max(state.wordsLearned, state.completedDays.length*10+currentVocabIndex+1);
+  saveState();
+  nextVocab();
+}
+
+// ─── Phrases ───
+function renderPhrasesTab() {
+  document.getElementById('phrases-list').innerHTML = currentLessonData.phrases.map(p=>`
+    <div class="phrase-item">
+      <div class="phrase-en">${p.en}</div>
+      <div class="phrase-zh">${p.zh}</div>
+      <div class="phrase-context">💡 ${p.context}</div>
+      <button class="play-btn" onclick="speakText('${p.en.replace(/'/g,"\\'")}')">🔊 朗讀</button>
+    </div>`).join('');
+}
+
+// ─── Dialogue ───
+function renderDialogueTab() {
+  const d = currentLessonData.dialogue;
+  document.getElementById('dialogue-scene-text').textContent = d.scene;
+  document.getElementById('dialogue-content').innerHTML = d.lines.map(line=>`
+    <div class="dialogue-line ${line.right?'right':''}">
+      <div><div class="speaker-avatar">${line.avatar}</div></div>
+      <div>
+        <div class="speaker-name">${line.speaker}</div>
+        <div class="dialogue-bubble">
+          <div class="bubble-en">${line.en}</div>
+          <div class="bubble-zh">${line.zh}</div>
+        </div>
+        <button class="play-btn" onclick="speakText('${line.en.replace(/'/g,"\\'")}')">🔊</button>
+      </div>
+    </div>`).join('');
+  document.getElementById('dialogue-tips').textContent = d.tips;
+}
+
+// ─── Email ───
+function renderEmailTab() {
+  const e = currentLessonData.email;
+  let body = e.body;
+  (e.highlights||[]).forEach(h=>{
+    body = body.replace(new RegExp(h.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'),
+      `<span class="email-highlight" onclick="showToast('💡 重點用語: ${h}')">${h}</span>`);
+  });
+  document.getElementById('email-content').innerHTML=`
+    <div class="email-header-bar"><h4>📧 商務Email範本</h4></div>
+    <div class="email-field"><div class="email-field-label">主旨</div><div class="email-field-val">${e.subject}</div></div>
+    <div class="email-field"><div class="email-field-label">寄件者</div><div class="email-field-val">${e.from}</div></div>
+    <div class="email-field"><div class="email-field-label">收件者</div><div class="email-field-val">${e.to}</div></div>
+    <div class="email-body">${body}</div>`;
+  document.getElementById('email-tips').textContent = e.tips;
+  document.getElementById('email-exercise').textContent = e.exercise;
+}
+
+function checkEmailExercise() {
+  document.getElementById('email-exercise').textContent = currentLessonData.email.body.substring(0,250)+'...';
+  showToast('✅ 參考答案已顯示','success');
+}
+
+// ─── Speaking ───
+function renderSpeakingTab() {
+  document.getElementById('speaking-content').innerHTML = currentLessonData.speaking.map((s,i)=>`
+    <div class="speaking-card">
+      <div class="chip chip-purple">口說練習 ${i+1}/${currentLessonData.speaking.length}</div>
+      <div class="speaking-prompt">${s.prompt}</div>
+      <div class="speaking-zh">${s.zh}</div>
+      <button class="record-btn" id="rec-${i}" onclick="toggleRecord(${i})">🎤</button>
+      <div class="record-hint" id="hint-${i}">點擊麥克風開始練習</div>
+      <div id="model-${i}" style="display:none" class="model-answer">
+        <h5>💡 參考答案</h5>
+        <p>${s.answer}</p>
+        <button class="play-btn" onclick="speakText('${s.answer.replace(/'/g,"\\'")}')">🔊 聆聽範例</button>
+      </div>
+      <button class="btn btn-outline" style="margin-top:12px" onclick="document.getElementById('model-${i}').style.display=document.getElementById('model-${i}').style.display==='none'?'block':'none'">💡 查看參考答案</button>
+    </div>`).join('');
+}
+
+function toggleRecord(idx) {
+  const btn = document.getElementById('rec-'+idx);
+  const hint = document.getElementById('hint-'+idx);
+  if(!isRecording) {
+    isRecording=true;
+    btn.classList.add('recording');
+    btn.textContent='⏹';
+    hint.textContent='⏺ 錄音中... 點擊停止（模擬）';
+    recordTimer=setTimeout(()=>{stopRecord(idx);showToast('✅ 練習完成！','success');},8000);
+  } else {
+    stopRecord(idx);
+    showToast('✅ 完成！繼續加油！','success');
+  }
+}
+
+function stopRecord(idx) {
+  clearTimeout(recordTimer);
+  isRecording=false;
+  const btn=document.getElementById('rec-'+idx);
+  const hint=document.getElementById('hint-'+idx);
+  btn.classList.remove('recording');
+  btn.textContent='🎤';
+  hint.textContent='✅ 完成！可再練一次或查看答案';
+  state.skills.speaking=Math.min(100,(state.skills.speaking||0)+2);
+  saveState();
+}
+
+// ─── Quiz ───
+function renderQuizTab() {
+  quizAnswered=new Array(currentLessonData.quiz.length).fill(false);
+  quizScore=0;
+  document.getElementById('quiz-content').innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div class="chip chip-blue">共${currentLessonData.quiz.length}題</div>
+      <div id="quiz-score-display" style="font-size:13px;font-weight:700;color:var(--text-muted)">已答 0/${currentLessonData.quiz.length}</div>
+    </div>
+    ${currentLessonData.quiz.map((q,i)=>`
+      <div class="quiz-question" id="qq-${i}">
+        <div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:6px">Q${i+1} of ${currentLessonData.quiz.length}</div>
+        <h4>${q.q}</h4>
+        ${q.opts.map((o,oi)=>`<button class="quiz-opt" id="opt-${i}-${oi}" onclick="answerQuiz(${i},${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}
+      </div>`).join('')}
+    <div id="quiz-result-area"></div>`;
+}
+
+function answerQuiz(qi,oi) {
+  if(quizAnswered[qi]) return;
+  quizAnswered[qi]=true;
+  const q=currentLessonData.quiz[qi];
+  const correct=q.answer===oi;
+  if(correct) quizScore++;
+  q.opts.forEach((_,i)=>{
+    const opt=document.getElementById(`opt-${qi}-${i}`);
+    if(i===oi) opt.classList.add(correct?'correct':'wrong');
+    if(i===q.answer&&!correct) opt.classList.add('show-answer');
+    opt.disabled=true;
+  });
+  showToast(correct?'🎉 答對了！+10 XP':'❌ 答錯，已標示正確答案', correct?'success':'');
+  const done=quizAnswered.filter(Boolean).length;
+  document.getElementById('quiz-score-display').textContent=`已答 ${done}/${quizAnswered.length}`;
+  if(done===quizAnswered.length) setTimeout(showQuizResult,500);
+}
+
+function showQuizResult() {
+  const total=currentLessonData.quiz.length;
+  const pct=Math.round(quizScore/total*100);
+  const xp=quizScore*10+(pct===100?50:0);
+  document.getElementById('quiz-result-area').innerHTML=`
+    <div class="quiz-result">
+      <div class="quiz-score">${pct}%</div>
+      <div class="quiz-score-label">${quizScore}/${total} 答對 · +${xp} XP</div>
+      <div style="font-size:28px;margin:12px 0">${pct>=80?'🎉':pct>=60?'👍':'💪'}</div>
+      <div style="font-size:14px;color:var(--text-muted)">${pct>=80?'太厲害了！繼續保持！':pct>=60?'不錯！再複習一次更好！':'加油！多練習一定進步！'}</div>
+      <button class="start-btn" style="margin-top:16px" onclick="completeLesson(${xp})">✅ 完成今日課程</button>
+    </div>`;
+  setTimeout(()=>document.getElementById('quiz-result-area').scrollIntoView({behavior:'smooth',block:'center'}),300);
+}
+
+function completeLesson(xp) {
+  const day=currentLessonDay;
+  if(!state.completedDays.includes(day)) {
+    state.completedDays.push(day);
+    state.totalXP+=(xp||50);
+    state.wordsLearned+=currentLessonData.vocab.length;
+    if(day===state.currentDay) state.currentDay=Math.min(180,day+1);
+    const today=new Date().toDateString();
+    if(state.lastStudyDate!==today) {
+      const yest=new Date(Date.now()-86400000).toDateString();
+      state.streak=state.lastStudyDate===yest?(state.streak+1):1;
+      state.lastStudyDate=today;
+    }
+    state.skills.vocab=Math.min(100,Math.round(state.completedDays.length/1.8));
+    state.skills.listening=Math.min(100,Math.round(state.completedDays.length/2));
+    state.skills.speaking=Math.min(100,(state.skills.speaking||0)+1);
+    state.skills.email=Math.min(100,Math.round(state.completedDays.filter(d=>d>=61&&d<=90).length/30*100));
+    state.skills.meeting=Math.min(100,Math.round(state.completedDays.filter(d=>d>=31&&d<=60).length/30*100));
+    saveState();
+    renderHome();
+  }
+
+  const nextDay=Math.min(180,day+1);
+  const next=getDayData(nextDay);
+  const existingComplete=document.getElementById('complete-screen');
+  if(existingComplete) existingComplete.remove();
+
+  const div=document.createElement('div');
+  div.className='complete-screen';
+  div.id='complete-screen';
+  div.innerHTML=`
+    <div class="trophy">🏆</div>
+    <h2>Day ${day} 完成！</h2>
+    <p>您成功完成了今日的商務英文學習</p>
+    <div class="xp-badge">⭐ +${xp} XP 獲得！</div>
+    ${state.streak>1?`<div style="background:linear-gradient(135deg,#F59E0B,#EF4444);color:#fff;border-radius:12px;padding:12px 16px;margin-top:16px;font-weight:700">🔥 連續學習 ${state.streak} 天！太棒了！</div>`:''}
+    <div style="background:var(--card);border-radius:var(--radius);padding:16px;margin-top:16px;box-shadow:var(--shadow);text-align:left">
+      <div style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:6px">🔜 明日課程 Day ${nextDay}</div>
+      <div style="font-size:16px;font-weight:700;color:var(--primary)">${next.title}</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px">Phase ${next.phase} · ${next.vocab.length}個新單字</div>
+    </div>
+    <button class="next-lesson-btn" onclick="closeLesson();showPage('home')">🏠 返回首頁</button>`;
+  document.getElementById('tab-quiz').appendChild(div);
+  setTimeout(()=>div.scrollIntoView({behavior:'smooth'}),300);
+}
+
+// ─── TTS (shared) ───
+function speakText(text) {
+  speakTextWithCallback(text, 0.85, null, null);
+}
+
+// ─── Settings ───
+const wordOpts=[5,10,15,20];
+let wordOptIdx=1;
+function cycleWordsPerDay() {
+  wordOptIdx=(wordOptIdx+1)%wordOpts.length;
+  document.getElementById('words-per-day-btn').textContent=wordOpts[wordOptIdx]+'個';
+}
+
+function setUserName() {
+  const name=prompt('請輸入您的暱稱：',state.userName||'');
+  if(name!==null&&name.trim()) {
+    state.userName=name.trim();
+    document.getElementById('user-name-display').textContent=name.trim();
+    saveState();
+    showToast('✅ 暱稱已更新！','success');
+  }
+}
+
+function resetProgress() {
+  if(confirm('確定重置所有學習進度？此操作無法復原！')) {
+    localStorage.removeItem('bizEng180');
+    location.reload();
+  }
+}
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+window.addEventListener('load',()=>{
+  loadState();
+  if(state.userName) document.getElementById('user-name-display').textContent=state.userName;
+  if('speechSynthesis' in window) { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>{}; }
+  setTimeout(()=>{
+    const splash=document.getElementById('splash');
+    splash.style.opacity='0';
+    setTimeout(()=>splash.style.display='none',500);
+    renderHome();
+    const h=new Date().getHours();
+    const g=h<12?'早安':h<18?'午安':'晚安';
+    setTimeout(()=>showToast(`${g}！今天是Day ${state.currentDay}，加油！💪`),700);
+  },2000);
+
+  // ── 註冊 Service Worker (PWA 離線功能) ──
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js')
+      .then(r=>console.log('✅ SW ready',r.scope))
+      .catch(e=>console.warn('SW error',e));
+  }
+
+  // ── iOS Safari：未安裝時顯示「加入主畫面」提示 ──
+  const isIos=/iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+  const isStandalone=('standalone' in navigator)&&navigator.standalone;
+  if(isIos&&!isStandalone&&!localStorage.getItem('ios-prompt-dismissed')){
+    setTimeout(showIosInstallPrompt, 4000);
+  }
+
+  // ── Android Chrome：攔截安裝事件 ──
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault(); deferredPrompt=e;
+    if(!localStorage.getItem('pwa-installed'))
+      setTimeout(()=>showAndroidInstallPrompt(deferredPrompt),4000);
+  });
+  window.addEventListener('appinstalled',()=>{
+    localStorage.setItem('pwa-installed','1');
+    showToast('🎉 APP 已成功安裝到桌面！','success');
+    hideInstallBanner();
+  });
+});
+
+// ── iOS 安裝提示橫幅 ──
+function showIosInstallPrompt(){
+  if(document.getElementById('install-banner')) return;
+  const b=document.createElement('div');
+  b.id='install-banner';
+  b.style.cssText='position:fixed;bottom:82px;left:12px;right:12px;background:#1E293B;color:#fff;border-radius:16px;padding:16px;z-index:9998;box-shadow:0 8px 32px rgba(0,0,0,.45);animation:fadeUp .4s ease';
+  b.innerHTML=`
+    <div style="display:flex;align-items:flex-start;gap:12px">
+      <div style="font-size:32px;flex-shrink:0">📲</div>
+      <div style="flex:1">
+        <div style="font-weight:800;font-size:15px;margin-bottom:5px">安裝到 iPhone 桌面</div>
+        <div style="font-size:13px;opacity:.85;line-height:1.6">
+          點底部 <strong>分享 □↑</strong> 按鈕，<br>再選 <strong>「加入主畫面」</strong> 即可！
+        </div>
+        <div style="margin-top:10px;display:flex;align-items:center;gap:8px;font-size:13px">
+          <span style="background:rgba(255,255,255,.15);padding:4px 10px;border-radius:8px">□↑ 分享</span>
+          <span>→</span>
+          <span style="background:#2563EB;padding:4px 10px;border-radius:8px;font-weight:700">＋ 加入主畫面</span>
+        </div>
+      </div>
+      <button onclick="hideInstallBanner()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:22px;cursor:pointer;padding:0;line-height:1">✕</button>
+    </div>`;
+  document.body.appendChild(b);
+}
+
+// ── Android 安裝提示橫幅 ──
+function showAndroidInstallPrompt(prompt){
+  if(document.getElementById('install-banner')) return;
+  const b=document.createElement('div');
+  b.id='install-banner';
+  b.style.cssText='position:fixed;bottom:82px;left:12px;right:12px;background:#1E293B;color:#fff;border-radius:16px;padding:16px;z-index:9998;box-shadow:0 8px 32px rgba(0,0,0,.45);animation:fadeUp .4s ease';
+  b.innerHTML=`
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:36px">📲</div>
+      <div style="flex:1">
+        <div style="font-weight:800;font-size:15px">安裝 BizEnglish Pro</div>
+        <div style="font-size:13px;opacity:.8;margin-top:3px">加入桌面，離線也能學習！</div>
+      </div>
+      <button onclick="hideInstallBanner()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;padding:4px">✕</button>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <button onclick="hideInstallBanner()" style="flex:1;background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:10px;padding:10px;font-size:14px;font-weight:700;cursor:pointer">稍後</button>
+      <button onclick="doAndroidInstall()" style="flex:2;background:#2563EB;color:#fff;border:none;border-radius:10px;padding:10px;font-size:14px;font-weight:700;cursor:pointer">📥 立即安裝</button>
+    </div>`;
+  document.body.appendChild(b);
+  window._deferredPrompt=prompt;
+}
+
+function doAndroidInstall(){
+  if(window._deferredPrompt){
+    window._deferredPrompt.prompt();
+    window._deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted') showToast('🎉 安裝成功！','success');
+      window._deferredPrompt=null;
+    });
+  }
+  hideInstallBanner();
+}
+
+function hideInstallBanner(){
+  const b=document.getElementById('install-banner');
+  if(b){b.style.opacity='0';b.style.transform='translateY(20px)';b.style.transition='all .3s';setTimeout(()=>b.remove(),300);}
+  localStorage.setItem('ios-prompt-dismissed','1');
+}
+</script>
+</body>
+</html>
