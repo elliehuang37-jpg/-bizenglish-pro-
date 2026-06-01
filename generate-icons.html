@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>產生APP圖示</title></head>
+<body style="font-family:sans-serif;padding:24px;background:#f0f4ff">
+<h2>💼 BizEnglish Pro — APP圖示產生器</h2>
+<p style="color:#666">點擊下方按鈕，自動產生所有尺寸的圖示並下載</p>
+<button onclick="generateAll()" style="background:#2563EB;color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:24px">🎨 一鍵產生所有圖示</button>
+<div id="output" style="display:flex;flex-wrap:wrap;gap:16px"></div>
+
+<script>
+const SIZES = [72,96,128,144,152,192,384,512];
+
+function drawIcon(size) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  const r = size * 0.18;
+
+  // 背景漸層
+  const grad = ctx.createLinearGradient(0,0,size,size);
+  grad.addColorStop(0, '#1D4ED8');
+  grad.addColorStop(1, '#7C3AED');
+  ctx.beginPath();
+  ctx.moveTo(r,0); ctx.lineTo(size-r,0);
+  ctx.quadraticCurveTo(size,0,size,r);
+  ctx.lineTo(size,size-r);
+  ctx.quadraticCurveTo(size,size,size-r,size);
+  ctx.lineTo(r,size);
+  ctx.quadraticCurveTo(0,size,0,size-r);
+  ctx.lineTo(0,r);
+  ctx.quadraticCurveTo(0,0,r,0);
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // 白色公事包 emoji 風格
+  const pad = size * 0.2;
+  const cw = size - pad*2;
+  const ch = cw * 0.72;
+  const cx = pad;
+  const cy = (size - ch) / 2 + size*0.04;
+  const cr = size * 0.07;
+
+  // 公事包主體
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  ctx.beginPath();
+  ctx.moveTo(cx+cr, cy); ctx.lineTo(cx+cw-cr, cy);
+  ctx.quadraticCurveTo(cx+cw, cy, cx+cw, cy+cr);
+  ctx.lineTo(cx+cw, cy+ch-cr);
+  ctx.quadraticCurveTo(cx+cw, cy+ch, cx+cw-cr, cy+ch);
+  ctx.lineTo(cx+cr, cy+ch);
+  ctx.quadraticCurveTo(cx, cy+ch, cx, cy+ch-cr);
+  ctx.lineTo(cx, cy+cr);
+  ctx.quadraticCurveTo(cx, cy, cx+cr, cy);
+  ctx.fill();
+
+  // 公事包把手
+  const hw = cw * 0.32;
+  const hx = cx + (cw-hw)/2;
+  const hy = cy - size*0.1;
+  const hh = size * 0.1;
+  const hth = size * 0.055;
+  ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+  ctx.lineWidth = hth;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(hx, cy);
+  ctx.lineTo(hx, hy + cr);
+  ctx.quadraticCurveTo(hx, hy, hx+cr, hy);
+  ctx.lineTo(hx+hw-cr, hy);
+  ctx.quadraticCurveTo(hx+hw, hy, hx+hw, hy+cr);
+  ctx.lineTo(hx+hw, cy);
+  ctx.stroke();
+
+  // 公事包中間橫條
+  ctx.fillStyle = '#2563EB';
+  ctx.fillRect(cx, cy + ch*0.42, cw, ch*0.16);
+
+  // 小鎖扣
+  const lw = size*0.08, lh = size*0.08;
+  const lx = cx+(cw-lw)/2, ly = cy+ch*0.42-lh*0.5;
+  ctx.fillStyle = '#7C3AED';
+  ctx.beginPath();
+  ctx.arc(lx+lw/2, ly+lh/2, lw*0.55, 0, Math.PI*2);
+  ctx.fill();
+
+  return canvas;
+}
+
+function generateAll() {
+  const out = document.getElementById('output');
+  out.innerHTML = '<p style="color:#2563EB;font-weight:700">⏳ 產生中...</p>';
+  setTimeout(() => {
+    out.innerHTML = '';
+    SIZES.forEach(size => {
+      const canvas = drawIcon(size);
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'text-align:center;';
+      const img = document.createElement('img');
+      img.src = canvas.toDataURL();
+      img.style.cssText = `width:${Math.min(size,96)}px;height:${Math.min(size,96)}px;border-radius:${size*0.18}px;box-shadow:0 4px 12px rgba(37,99,235,.3)`;
+      const label = document.createElement('div');
+      label.textContent = `${size}×${size}`;
+      label.style.cssText = 'font-size:12px;font-weight:700;color:#64748B;margin-top:6px';
+      const dlBtn = document.createElement('button');
+      dlBtn.textContent = '⬇ 下載';
+      dlBtn.style.cssText = 'display:block;margin:6px auto 0;background:#DBEAFE;color:#2563EB;border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer';
+      dlBtn.onclick = () => {
+        const a = document.createElement('a');
+        a.download = `icon-${size}.png`;
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      };
+      wrap.appendChild(img);
+      wrap.appendChild(label);
+      wrap.appendChild(dlBtn);
+      out.appendChild(wrap);
+    });
+
+    // 全部下載按鈕
+    const allBtn = document.createElement('div');
+    allBtn.style.cssText = 'width:100%;margin-top:8px';
+    allBtn.innerHTML = `<button onclick="downloadAll()" style="background:#2563EB;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;width:100%">📥 全部下載（${SIZES.length}個圖示）</button>`;
+    out.appendChild(allBtn);
+
+    const inst = document.createElement('div');
+    inst.style.cssText = 'width:100%;margin-top:16px;background:#D1FAE5;border-radius:10px;padding:16px;font-size:13px;line-height:1.7';
+    inst.innerHTML = `<strong style="color:#059669">✅ 下載完成後請這樣做：</strong><br>
+    1. 在 <code>business-english-app</code> 資料夾內建立 <code>icons</code> 子資料夾<br>
+    2. 把所有下載的 <code>icon-xxx.png</code> 放進 <code>icons/</code> 資料夾<br>
+    3. 完成！可以關閉此頁面`;
+    out.appendChild(inst);
+  }, 100);
+}
+
+function downloadAll() {
+  SIZES.forEach((size, i) => {
+    setTimeout(() => {
+      const canvas = drawIcon(size);
+      const a = document.createElement('a');
+      a.download = `icon-${size}.png`;
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    }, i * 200);
+  });
+}
+</script>
+</body>
+</html>
